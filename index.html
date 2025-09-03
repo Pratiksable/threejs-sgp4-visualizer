@@ -12,8 +12,97 @@
         http://www.shadedrelief.com/natural3/index.html
 -->
 <body>
+  <div class="search-container">
+  <input type="text" id="satelliteSearch" placeholder="Search Satellite (e.g. ISS, Starlink)">
+  <button id="searchBtn">
+    🔍
+  </button>
+</div>
+
     <canvas id="globe"></canvas>
-    <script src="./main.js"></script>
+    <div id="timezoneClockContainer">
+  <h4>Multi-Timezone Clock</h4>
+  <div class="dropdown">
+    <button id="timezoneDropdownBtn">Select Timezones ▼</button>
+    <div id="timezoneDropdown" class="dropdown-content">
+      <!-- Options will be populated dynamically -->
+    </div>
+  </div>
+  <div id="clockDisplay"></div>
+</div>
+
+<div id="satelliteFiltersContainer">
+    <h4>Satellite Filters</h4>
+    <div class="filter-grid">
+      <!-- Satellite Type Filter -->
+      <div class="filter-card">
+        <h5>Satellite Type</h5>
+        <label><input type="checkbox" value="ISS" class="filter-type"> ISS</label>
+        <label><input type="checkbox" value="Starlink" class="filter-type"> Starlink</label>
+        <label><input type="checkbox" value="GPS" class="filter-type"> GPS</label>
+      </div>
+
+      <!-- Orbit Type Filter -->
+      <div class="filter-card">
+        <h5>Orbit Type</h5>
+        <label><input type="checkbox" value="LEO" class="filter-orbit"> LEO</label>
+        <label><input type="checkbox" value="MEO" class="filter-orbit"> MEO</label>
+        <label><input type="checkbox" value="GEO" class="filter-orbit"> GEO</label>
+      </div>
+
+      <!-- Operator / Country Filter -->
+      <div class="filter-card">
+        <h5>Operator / Country</h5>
+        <label><input type="checkbox" value="USA" class="filter-operator"> USA</label>
+        <label><input type="checkbox" value="Russia" class="filter-operator"> Russia</label>
+        <label><input type="checkbox" value="China" class="filter-operator"> China</label>
+      </div>
+
+      <!-- Status Filter -->
+      <div class="filter-card">
+        <h5>Status</h5>
+        <label><input type="checkbox" value="active" class="filter-status"> Active</label>
+        <label><input type="checkbox" value="inactive" class="filter-status"> Inactive</label>
+        <label><input type="checkbox" value="decayed" class="filter-status"> Decayed</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div id="fileDrop" style="
+    position: absolute;
+    top: 70%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 150px;
+    border: 3px dashed #007BFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: sans-serif;
+    color: #007BFF;
+    cursor: pointer;
+">
+    Drop JSON or TXT file here<br>or click to select
+</div>
+<input type="file" id="fileInput" accept=".json,.txt" style="display: none;" />
+    <div id="satInfo" style="
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  padding: 10px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-family: sans-serif;
+  border-radius: 8px;
+">
+</div>
     <script src="./three.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r152/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://unpkg.com/satellite.js/dist/satellite.min.js"></script>
+    <script  src="./main.js"></script>
 </body>
 </html>
